@@ -1,5 +1,3 @@
-package Leetcode217_ContainsDuplicate;
-
 import java.util.*;
 class ContainsDuplicate {
     public static boolean containsDuplicate(int[] nums) {
