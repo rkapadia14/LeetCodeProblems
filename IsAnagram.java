@@ -1,4 +1,4 @@
-import java.util.*;;
+import java.util.*;
 public class IsAnagram {
     public static boolean isAnagram(String s, String t) {
         if(s.length()!=t.length())
