@@ -9,39 +9,33 @@ import java.util.List;
 
 public class ThreeSum {
      public static List<List<Integer>> threeSumFindList(int[] nums) {
-        List<List<Integer>> result = new ArrayList<>();
-
-        //Sorting the array first for using the two pointer approach while finding two sum
-        Arrays.sort(nums);
-        for(int i=0;i<nums.length;i++)
-        {
+       List<List<Integer>> list = new ArrayList<List<Integer>>();
+       Arrays.sort(nums);
+        
+       for(int i=0;i<nums.length;i++)
+       {
             if (i > 0 && nums[i] == nums[i-1] )
                 continue;
-            List<Integer> list = new ArrayList<>();
-            int currentNo = nums[i];
-            //Setting pointers to find other two numbers
-            int left=i+1;
-            int right = nums.length-1;
+            int left = i+1;
+            int right=nums.length-1;
             while(left<right){
-                list = new ArrayList<>();
-                if(nums[left]+nums[right]+currentNo==0)
-                {
-                    list.add(nums[left]);
-                    list.add(nums[right]);
-                    list.add(currentNo);
-                    result.add(list);
+                if(nums[i]+nums[left]+nums[right]==0){
+                    list.add(Arrays.asList(nums[i],nums[left],nums[right]));
                     left++;
-                    //To avoid duplicates
+                    right--;
                     while(left < right && nums[left] == nums[left-1]) 
                         left++;
+                    while(left < right && nums[right] == nums[right+1]) 
+                        right--;
                 }
-                else if(nums[left]+nums[right]+currentNo<0)
-                    left++;
-                else right--;
+                else if(nums[i]+nums[left]+nums[right]<0){
+                        left++;
+                }
+                else
+                    right--;
             }
-        }
-
-        return result;
+       }
+       return list;
      }
      public static void main(String[] args) {
         int[] nums = {-1,0,1,2,-1,-4};
