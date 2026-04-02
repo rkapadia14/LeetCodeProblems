@@ -8,7 +8,7 @@ without duplicate characters.
 
 Problem Type: Variable Size Sliding Window 
 
-Space Complexity: O(1)
+Space Complexity: O(k), where k is the number of distinctive characters present in the hashset.
 
 Time Complexity: O(n)
 
